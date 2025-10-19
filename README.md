@@ -1,55 +1,131 @@
-# ☀️ SolarIQ - Smart Solar Performance Analyzer
+# 🌞 Solar-IQ: AI Solar Performance Analyzer
 
-A web application built by [Your Name] to analyze and estimate the performance, savings, and environmental impact of a solar panel installation.
-
-**Live App:** [https://solar-iq-ai-analyzer.lovable.app](https://solar-iq-ai-analyzer.lovable.app)
-
----
-
-
-## 🚀 Features
-
-* **Instantaneous Power Calculation:** Calculates peak DC power output.
-* **Energy Estimation:** Provides daily and monthly energy generation (in kWh), factoring in a real-world Performance Ratio.
-* **Financial Savings:** Estimates monthly cost savings based on a user-defined tariff.
-* **Environmental Impact:** Calculates monthly CO₂ emissions saved.
-* **AI Performance Insights:** (This is your key feature!) Provides actionable recommendations based on the system's calculated efficiency.
+**Smart Solar System Performance Evaluation Using AI**  
+Built with ❤️ using **Lovable App Builder + Custom AI Logic**
 
 ---
 
-## 🛠️ Technologies Used
+## 🚀 Overview
 
-* **Frontend:** HTML, CSS
-* **Backend:** Python (with Flask framework)
-* **Deployment:** Lovable.app (or wherever you hosted it)
+**Solar-IQ** is an AI-powered solar performance analyzer that estimates, evaluates, and optimizes the efficiency of solar panels using real-time input parameters such as irradiance, panel area, efficiency, and measured power.
 
----
+The app intelligently compares **theoretical** vs **actual** output, identifies **losses**, and provides **performance improvement insights** — all through a clean, interactive UI.
 
-## 💡 Core Logic
-
-The analyzer uses standard photovoltaic formulas to determine peak power and then applies a realistic **Performance Ratio (PR) of 85%** to estimate the actual AC energy output.
-
-**1. Instantaneous DC Power:**
-`Power (W) = Panel Area (m²) * Panel Efficiency (%) * Solar Irradiance (W/m²)`
-
-**2. Daily Energy (AC):**
-`Energy (kWh) = (Power (W) * Avg. Sunlight Hours * 0.85_PR) / 1000`
-
-**3. CO₂ Savings:**
-A carbon intensity factor of **0.85 kg CO₂/kWh** is used to estimate environmental savings.
+👉 **Live Preview:** [Solar-IQ AI Analyzer (Lovable)](https://preview--solar-iq-ai-analyzer.lovable.app/)
 
 ---
 
-## How to Run This Project Locally
+## 🧠 Core Logic (This Repository)
 
-(This section is for other developers)
+This repository contains only the **analytical logic and AI computation engine** used in the Solar-IQ app.  
+It includes the mathematical model and AI reasoning used to generate performance insights in the Lovable front-end.
 
-1.  **Clone the repository:**
-    `git clone https://github.com/your-username/solariq-app.git`
-2.  **Navigate to the directory:**
-    `cd solariq-app`
-3.  **Install dependencies:**
-    `pip install -r requirements.txt`
-    *(**Note:** You'll need to create a `requirements.txt` file by running `pip freeze > requirements.txt` in your project folder)*
-4.  **Run the app:**
-    `flask run`
+---
+
+## 📘 Working Principle
+
+### 1️⃣ User Inputs
+- Solar panel area (m²)
+- Efficiency (%)
+- Solar irradiance (W/m²)
+- Measured power output (W)
+
+### 2️⃣ Theoretical Power Calculation
+\[
+P_{theoretical} = Area \times Irradiance \times \left(\frac{Efficiency}{100}\right)
+\]
+
+### 3️⃣ Performance Ratio (PR)
+\[
+PR = \frac{P_{actual}}{P_{theoretical}} \times 100
+\]
+
+- A PR of **100%** means the system is performing at ideal conditions.  
+- Lower PR indicates **losses** due to dust, temperature rise, wiring inefficiencies, or shading.
+
+### 4️⃣ AI Insight Generation
+The AI module interprets computed results and generates human-readable insights such as:
+- “Panel performance is 82% — cleaning recommended.”
+- “Excellent output — system running near ideal efficiency.”
+- “Low efficiency detected — possible temperature or wiring loss.”
+
+---
+
+## 🧩 Example Calculation
+
+| Parameter | Value |
+|------------|--------|
+| Panel Area | 20 m² |
+| Efficiency | 20% |
+| Irradiance | 1000 W/m² |
+| Measured Output | 3200 W |
+
+**Theoretical Power:**  
+\[
+20 × 1000 × 0.2 = 4000W
+\]
+
+**Performance Ratio:**  
+\[
+(3200 / 4000) × 100 = 80%
+\]
+
+**AI Insight:**  
+“Panel is underperforming by 20%. Check for dust accumulation or inverter losses.”
+
+---
+
+## ⚙️ Files Included
+
+| File | Description |
+|------|--------------|
+| `solar_iq_logic.py` | Core computation logic for theoretical and actual power comparison |
+| `ai_analysis_prompt.json` | Lovable-compatible AI prompt structure |
+| `formulas.md` | List of all equations and constants used |
+| `README.md` | Documentation (this file) |
+
+---
+
+## 💡 Integration with Lovable
+
+The **Lovable app** handles:
+- **User Interface** for data input and visualization  
+- **AI interaction** using this repo’s logic in the prompt  
+- **Visualization** of performance comparison and recommendations  
+
+Your **GitHub repository** stores the reusable core logic that Lovable connects to via AI prompt references.
+
+---
+
+## 🧰 Tech Stack
+
+| Component | Technology |
+|------------|-------------|
+| **Frontend** | Lovable (React + Tailwind based) |
+| **Computation Logic** | Python |
+| **AI Analysis** | GPT-powered prompt |
+| **Hosting** | Lovable Preview + GitHub integration |
+
+---
+
+## 🔍 Key Features
+
+✅ Accurate solar power estimation  
+✅ Real-time performance ratio computation  
+✅ AI-based diagnostic insights  
+✅ Lightweight, modular logic (for integration in any system)  
+✅ Expandable for IoT, SCADA, or blockchain-based data flow  
+
+---
+
+## 🔮 Future Enhancements
+
+- ⚡ Integration with real inverter data via API  
+- 🌦️ Real-time irradiance from live weather feeds  
+- 🧾 Auto-generated daily/monthly performance reports  
+- 🤖 Predictive maintenance alerts using AI trend analysis  
+
+---
+
+## 🗂️ Suggested Repository Structure
+
