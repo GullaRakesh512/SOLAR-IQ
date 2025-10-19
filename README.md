@@ -127,5 +127,5 @@ Your **GitHub repository** stores the reusable core logic that Lovable connects 
 
 ---
 
-## 🗂️ Suggested Repository Structure
+
 
